@@ -1,0 +1,99 @@
+<template>
+  <lightning-pill-container items={items} ></lightning-pill-container>
+  <lightning-card >
+    <div class="slds-page-header slds-page-header--object-home">
+        <lightning-layout>
+            <lightning-layout-item >
+                <lightning-icon icon-name="standard:contact" alternative-text="Contact" ></lightning-icon>
+            </lightning-layout-item>
+            <lightning-layout-item class="slds-m-left--small">
+                <p class="slds-text-title--caps slds-line-height--reset">Accounts</p>
+                <h1 class="slds-page-header__title slds-p-right--x-small">Contact
+                    Viewer</h1>
+            </lightning-layout-item>
+        </lightning-layout>
+        
+        <lightning-layout >
+            <lightning-layout-item >
+                <p class="slds-text-body--small"> Contacts • View
+                    Contacts Based on Selected Account</p>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+    <label class="slds-form-element__label" for="select-01">Select Account</label>
+    <div class="slds-form-element__control">
+        <div class="slds-select_container">
+            <select class="slds-select" id="select-01" onchange={onValueSelection}>
+                <!--iterate all picklist values from accounts list using for:each loop-->
+                <template for:each={accounts.data} for:item="acc">
+                    <option key={acc.Id} value={acc.Id}>
+                        {acc.Name}
+                    </option>
+                </template>
+            </select>
+        </div>
+    </div>
+    <template if:true={contacts}>
+        <lightning-card title="Contacts"  >
+            <div style="height: 300px;">
+                <lightning-datatable
+                                     key-field="Id"
+                                     data={contacts}
+                                     columns={columns}>
+                </lightning-datatable>
+            </div>    
+        </lightning-card>
+    </template>
+</lightning-card>
+
+
+
+
+    <lightning-card title="hiiThere" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+          <p>Hello, {greeting}!</p>
+          <lightning-input label="Name" value={greeting} onchange={changeHandler}></lightning-input>
+        </div>
+      </lightning-card>  
+      <lightning-card title="hiiThere" icon-name="custom:custom14">
+        <p class="slds-text-heading_small">{activeSectionMessage}</p>
+    
+        <lightning-button onclick={handleSetActiveSectionC} label="Open Section C"></lightning-button>
+    
+        <lightning-accordion class="example-accordion"
+                             onsectiontoggle={handleToggleSection}
+                             active-section-name="B">
+            <lightning-accordion-section name="A" label="Accordion Title A">
+                <lightning-button-menu slot="actions"
+                                      alternative-text="Show menu"
+                                      icon-size="x-small"
+                                      menu-alignment="right">
+                    <lightning-menu-item value="New" label="Menu Item One"></lightning-menu-item>
+                    <lightning-menu-item value="Edit" label="Menu Item Two"></lightning-menu-item>
+                </lightning-button-menu>
+                <p>This is the content area for section A.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>The section height expands to fit your content.</p>
+            </lightning-accordion-section>
+    
+            <lightning-accordion-section name="B" label="Accordion Title B">
+                <p>This is the content area for section B.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>The section height expands to fit your content.</p>
+            </lightning-accordion-section>
+    
+            <lightning-accordion-section name="C" label="Accordion Title C">
+                <p>This is the content area for section C.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>The section height expands to fit your content.</p>
+            </lightning-accordion-section>
+        </lightning-accordion>
+      </lightning-card>
+    
+</template>

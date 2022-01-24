@@ -1,0 +1,64 @@
+<template>
+    {accts}{stagename}{closedate}
+<table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-label="Example default base table of Opportunities">
+    <thead style="cursor: context-menu;">
+    <tr class="slds-line-height_reset">
+    <th class="" scope="col">
+    <div class="slds-truncate" title="Opportunity Name">Opportunity Name</div>
+    </th>
+    <th class="" scope="col">
+    <div class="slds-truncate" title="Account Name">Account Name</div>
+    </th>
+    <th class="" scope="col">
+    <div class="slds-truncate" title="Close Date">Close Date</div>
+    </th>
+    <th class="" scope="col">
+    <div class="slds-truncate" title="Stage">Stage</div>
+    </th>
+    <th class="" scope="col">
+    <div class="slds-truncate" title="Amount">Amount</div>
+    </th>
+    <th class="" scope="col">
+    <div class="slds-truncate" title="Contact">Probability</div>
+    </th>
+    </tr>
+    </thead>
+    <tbody>
+ <template for:each={obj} for:item="oppts">
+<!-- <template for:each={chartAmtData} for:item="amt"> -->
+
+    <tr class="slds-hint-parent" key={obj.Id}>
+    <th data-label="Opportunity Name" scope="row">
+    <div class="slds-truncate" title="Cloudhub">
+    <a  onclick={openOpp} data-id={oppts.Id} >{oppts.Name}</a>
+    <!-- <a  href="https://creative-bear-ua11wb-dev-ed.lightning.force.com/lightning/r/Account/0015g00000Mhv7dAAB/view" >{oppts.Name}</a> -->
+    </div>
+    </th>
+    <td data-label="Account Name">
+    <div class="slds-truncate" title="Cloudhub"><a onclick={openOpp} data-id={oppts.AccId} >{oppts.Account}</a></div>
+    </td>
+    <td data-label="Close Date">
+    <div class="slds-truncate" title="4/14/2015">{oppts.CloseDate}</div>
+    </td>
+    
+    <td data-label="Prospecting">
+    <div class="slds-truncate slds-badge" title="Prospecting">{oppts.StageName}</div>
+    
+    </td>
+
+    <td data-label="Confidence">
+        <!-- <div class="slds-truncate" title="Prospecting">{amt}</div> -->
+    <div class="slds-truncate" title="20%">{oppts.Amount}</div>
+    </td>
+    <td data-label="Amount">
+    <div class="slds-truncate" title="$25k">{oppts.Probability}</div>
+    </td>
+    </tr>
+    </template>
+<!-- </template> -->
+    </tbody>
+    </table>
+    
+   
+</template>
+

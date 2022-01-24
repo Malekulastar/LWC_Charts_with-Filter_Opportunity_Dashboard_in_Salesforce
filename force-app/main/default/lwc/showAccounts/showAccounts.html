@@ -1,0 +1,58 @@
+<template>
+    <p class="slds-text-heading_small">{activeSectionMessage}</p>
+
+    
+    <lightning-card  title="Account List">
+        <lightning-button label="New" slot="actions"></lightning-button>   
+        <lightning-accordion>
+            <template if:true={accountss.data}>
+    <ul>
+        <template for:each={accountss.data} for:item="account">
+        
+        <li key={account.Id}>
+    <lightning-accordion-section name="A" label={account.Name}>
+        <lightning-button-menu slot="actions"
+                              alternative-text="Show menu"
+                              icon-size="x-small"
+                              menu-alignment="right">
+            <lightning-menu-item value="New" label="Edit"  ></lightning-menu-item>
+            <lightning-menu-item value={account.Id} label="Delete" onclick={Delete}></lightning-menu-item>
+        </lightning-button-menu>
+        <p>Name:{account.Name}</p>
+        <p>Phone Number:{account.Phone}</p>
+        
+    </lightning-accordion-section>
+</li>
+</template>
+
+</ul> 
+</template>
+</lightning-accordion>
+    </lightning-card>
+
+    <!--lightning-card title="ApexWireMethodToProperty" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <template if:true={accounts.data}>
+                <template for:each={accounts.data} for:item="contact">
+                    <p key={contact.Id}>{contact.Name}</p>
+                </template>
+            </template>
+            <template if:true={contacts.error}>
+                <c-error-panel errors={contacts.error}></c-error-panel>
+            </template>
+        </div>
+    </lightning-card-->
+
+
+   
+
+        
+        <template for:each={accountss.data} for:item="acc">
+            <p key={acc.Id}>
+                 {acc.Name}
+            </p>
+       </template>
+    
+
+</template>
+

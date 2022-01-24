@@ -1,0 +1,19 @@
+.row{
+  
+    background-color: #ADD8E6;
+}
+template{
+    background-color: white;
+}
+.slds-form-element__control{
+    padding: 15px;
+}
+.slds-form-element__label {
+    padding-left: 15px;
+}
+.slds-text-heading_large{
+    padding: 5px;
+}
+.top{
+    margin-top: 5px;
+}

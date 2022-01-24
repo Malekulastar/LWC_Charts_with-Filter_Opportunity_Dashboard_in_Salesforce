@@ -1,0 +1,91 @@
+<template>
+    <lightning-card>
+        <div class=" slds-page-header--object-home">
+            <div class="slds-text-heading_large">  Opportunity Dashboard</div>
+        </div>
+    </lightning-card>
+
+
+    <lightning-card  title="Filters">
+        <!-- <lightning-button label="Apply Filters" slot="actions" onclick={onTest}></lightning-button> -->
+         <div class="slds-grid">
+
+        <div class="slds-col">
+            <label class="slds-form-element__label" for="select-01"> Select Account</label>
+        <div class="slds-form-element__control">
+            <div class="slds-select_container">
+                <select class="slds-select select-01" onchange={onTest}>
+                    <!--iterate all picklist values from accounts list using for:each loop-->
+                    <option value="" selected="selected">Select...</option>
+                    <template for:each={accts} for:item="acc">
+                        <option key={acc.Id} value={acc.Id} >
+                            {acc.Name}
+                        </option>
+                    </template>
+                </select>
+            </div>
+        </div>
+    </div>
+        
+
+
+        <div class="slds-col">
+            <label class="slds-form-element__label" for="select-01">Select Stage</label>
+            <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                    <select class="slds-select select-02" onchange={onTest}>
+                        <!--iterate all picklist values from accounts list using for:each loop-->
+                        <option value="" selected="selected">Select...</option>
+                        <template for:each={stages} for:item="opp">
+                            <option key={opp.Id} value={opp.Id}>
+                                {opp.stage}
+                            </option>
+                        </template>
+                    </select>
+                </div>
+            </div>
+        </div>
+       
+
+
+        <div class="slds-col">
+            <label class="slds-form-element__label" for="select-01">Select CloseDate</label>
+            <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                    <select class="slds-select select-03" onchange={onTest}>
+                        <!--iterate all picklist values from accounts list using for:each loop-->
+                        <option value="" selected="selected">Select...</option>
+                            <option value="cyear">
+                                Current Fiscal Year
+                            </option>
+                        
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    </lightning-card>
+
+
+
+    
+    
+   <br>
+    <div class="row">
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+                <div style="height: 450px; width:780px;"><c-funnel-Chart accts={acctId} stagename={stageName} ></c-funnel-Chart></div>
+            </div>
+            <div class="slds-col" >
+                <div  style="height: 450px; width:680px;"> <c-bar-Chart  accts={acctId} stagename={stageName}></c-bar-Chart></div>
+            </div>
+            
+            </div>      
+        
+      </div>
+    <div class="top">
+        <c-data-Table  accts={acctId} stagename={stageName}  closedate={closeDate}></c-data-Table>
+    </div>
+    
+</template>
